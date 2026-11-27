@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hi-Lo Blackjack Trainer — Andrew Cahill</title>
+<meta name="description" content="Project by Andrew Cahill, Mechanical Engineering @ UVA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FAFAF8;color:#14171F;font-family:"IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#B25400}a:hover{color:#14171F}
+.wrap{max-width:1200px;margin:0 auto;padding:0 64px;box-sizing:border-box}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #DADDE2;border-bottom:1px solid #DADDE2}
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.split{display:grid;grid-template-columns:240px minmax(0,1fr);gap:64px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:2px;font-weight:600;font-size:15px;text-decoration:none;box-sizing:border-box}
+@media (max-width:900px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.meta{grid-template-columns:minmax(0,1fr)}.split{grid-template-columns:minmax(0,1fr);gap:16px}}
+@media (max-width:640px){.wrap{padding:0 20px}.gallery{grid-template-columns:minmax(0,1fr)}}
+.hilo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.steps li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid #DADDE2}
+.steps li:last-child{border-bottom:1px solid #DADDE2}
+.steps .k{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#B25400;padding-top:4px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:14px}
+.flow span:nth-child(odd){padding:8px 14px;border:1px solid #14171F;border-radius:2px}
+@media (max-width:640px){.hilo{grid-template-columns:minmax(0,1fr)}.steps li{grid-template-columns:minmax(0,1fr);gap:4px}}
+</style>
+</head>
+<body>
+<div>
+
+<header style="border-bottom: 1px solid #DADDE2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #14171F; font-weight: 600; font-size: 16px"><span style="display: inline-block; width: 12px; height: 12px; background: #E57200"></span>Andrew Cahill</a>
+<a href="index.html#projects" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: #535A66; text-decoration: none">← All projects</a>
+</div>
+</header>
+
+<section>
+<div class="wrap" style="padding-top: 80px; padding-bottom: 48px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 20px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #B25400">Personal project · Built with Claude Code</p>
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; background: #14171F; color: #FFFFFF; border-radius: 2px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span style="display: inline-block; width: 8px; height: 8px; background: #e8c654"></span>Still in progress</span>
+</div>
+<h1 style="margin: 0 0 24px; font-size: clamp(38px, 5.6vw, 68px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; max-width: 18ch">Hi-Lo Blackjack Trainer</h1>
+<p style="margin: 0 0 32px; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.55; max-width: 60ch">A realistic blackjack table that grades card counting and strategy decisions, <br>built with Claude Code.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 48px">
+<a class="btn" href="https://adcahill7.github.io/blackjack-trainer/" target="_blank" rel="noopener" style="background: #E57200; color: #14171F">Live demo ↗</a>
+</div>
+<dl class="meta" style="margin: 0">
+<div style="padding: 16px 16px 16px 0"><dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535A66">Term</dt><dd style="margin: 4px 0 0; font-size: 16px">Fall 2026</dd></div>
+<div style="padding: 16px 16px 16px 0"><dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535A66">Type</dt><dd style="margin: 4px 0 0; font-size: 16px">Personal project, solo</dd></div>
+<div style="padding: 16px 16px 16px 0"><dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535A66">Tools</dt><dd style="margin: 4px 0 0; font-size: 16px">Claude Code</dd></div>
+</dl>
+</div>
+</section>
+
+<section>
+<div class="wrap" style="padding-bottom: 64px">
+<figure style="margin: 0">
+<div style="border: 1px solid #DADDE2; border-radius: 4px; overflow: hidden; background: #FFFFFF">
+
+<img src="assets/bj-hero.jpg" alt="The trainer's 3D blackjack table in the betting phase: green felt, dealer chip rack, a clear acrylic shoe on the right, a discard holder on the left, seven betting circles and a chip tray of 1, 5, 10, 25, 100 and 500 chips" style="width: 100%; display: block; background: #0d1410">
+</div>
+
+</figure>
+</div>
+</section>
+
+
+
+<section>
+<div class="wrap" style="padding-top: 96px; padding-bottom: 32px; display: flex; flex-direction: column; gap: 72px">
+
+<div class="split">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 600"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: #B25400; margin-bottom: 8px">01</span>The spark</h2>
+<div style="font-size: 17px; line-height: 1.65; max-width: 68ch; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0">In my Applied Probability and Statistics class I researched the probability behind blackjack and how card counting shifts the odds. That got me interested in the game as a whole, and I wanted to turn the math into something I could actually practice with. So I built a trainer with Claude Code, partly to learn the game and partly to get better at working with AI coding tools.</p>
+<div style="border: 1px solid #DADDE2; border-radius: 4px; background: #FFFFFF; overflow: hidden">
+<p style="margin: 0; padding: 12px 20px; border-bottom: 1px solid #DADDE2; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #535A66">How Hi-Lo counting works</p>
+<div class="hilo">
+<div style="padding: 20px; background: #2f7438; color: #FFFFFF"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1">+1</p><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.4">Cards 2, 3, 4, 5, 6</p><p style="margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: #E8F1E6">Low cards leaving is good for you</p></div>
+<div style="padding: 20px; background: #F1F2F4; color: #14171F"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1">0</p><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.4">Cards 7, 8, 9</p><p style="margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: #535A66">Neutral</p></div>
+<div style="padding: 20px; background: #14171F; color: #FFFFFF"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; color: #e8c654">−1</p><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.4">10, J, Q, K and aces</p><p style="margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: #9AA1AD">High cards leaving is bad for you</p></div>
+</div>
+<div style="padding: 20px; border-top: 1px solid #DADDE2; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 16px; line-height: 1.6">Add up every card you see to get the <strong style="font-weight: 600">running count</strong>. Divide it by the decks left in the shoe to get the <strong style="font-weight: 600">true count</strong>. A higher true count means the remaining cards favour the player, so you bet more.</p>
+<p style="margin: 0; padding: 12px 16px; background: #F1F2F4; font-family: 'IBM Plex Mono', monospace; font-size: 15px; line-height: 1.6">running count +7 ÷ 2.5 decks left = true count <strong style="font-weight: 500; color: #B25400">+2.80</strong> → bet 4 units</p>
+</div>
+</div>
+<figure style="margin: 0"><img src="assets/true-count-advantage.png" alt="Line chart of player advantage against true count from −14 to +14, rising from about −5% to about +9% for 6-deck, 2-deck and single-deck games" style="width: 100%; display: block; border: 1px solid #DADDE2"><figcaption style="margin-top: 10px; font-size: 14px; color: #535A66">Player advantage by true count. Source: <a href="https://www.blackjackincolor.com/truecount2.htm" target="_blank" rel="noopener">Blackjack in Color</a> ↗</figcaption></figure>
+</div>
+</div>
+
+<div class="split">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 600"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: #B25400; margin-bottom: 8px">02</span>What it does</h2>
+<div style="font-size: 17px; line-height: 1.65; max-width: 68ch; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0">It's a practice tool for two separate skills: sizing bets from the count, and playing each hand correctly (called basic strategy). It uses practice chips only. It's a learning tool, not a gambling product.</p>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px">
+<li><strong style="font-weight: 600">Two scores, not one.</strong> Every bet and every play is graded, shown as correct out of attempted (for example 41/41), with separate Betting and Playing counters so I can see which skill needs work.</li>
+<li><strong style="font-weight: 600">“Hide answers” mode</strong> keeps the count hidden so I have to track it in my head, then explains each decision after I commit.</li>
+<li><strong style="font-weight: 600">Real strategy charts.</strong> Playing decisions are checked against the published Wizard of Odds basic strategy charts for 1-, 2- and 4–8-deck games.</li>
+<li><strong style="font-weight: 600">Configurable table rules:</strong> number of decks, whether the dealer hits soft 17, 3:2 or 6:5 blackjack payouts, surrender, doubling after a split, and how deep the cut card sits.</li>
+</ul>
+</div>
+</div>
+
+<div class="split">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 600"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: #B25400; margin-bottom: 8px">03</span>Making it feel real</h2>
+<div style="font-size: 17px; line-height: 1.65; max-width: 68ch; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0">Counting at a real table means reading physical cues, so the trainer copies them:</p>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px">
+<li>A 3D perspective table instead of a flat diagram.</li>
+<li>A clear acrylic shoe that shows the cut card at its true position in the deck stack.</li>
+<li>A discard holder drawn to real scale, about 0.3 mm per card, so one deck stands about 15.6 mm tall. That lets me practice estimating decks remaining by eye, the way a counter must at a real table.</li>
+<li>A dealer chip rack, seven betting circles and controls modelled on live-dealer casino apps.</li>
+</ul>
+</div>
+</div>
+
+<div class="split">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 600"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: #B25400; margin-bottom: 8px">04</span>How I worked with Claude Code</h2>
+<div style="font-size: 17px; line-height: 1.65; max-width: 68ch; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0">I treated it like an engineering design process. Before any code was written, I wrote a detailed requirements spec with specific test cases, for example: <em>“a running count of +7 with 130 cards left should give a true count of +2.80 and a 4-unit bet.”</em> Then I reviewed each version and gave concrete feedback.</p>
+<ol class="steps" style="margin: 0; padding: 0; list-style: none">
+<li><span class="k">Iteration 1</span><span>A flat 2D table → a true 3D perspective scene.</span></li>
+<li><span class="k">Iteration 2</span><span>A stylized discard tray → a real-scale discard holder I can use to estimate decks.</span></li>
+<li><span class="k">Iteration 3</span><span>Research into real casino and live-dealer table layouts → redesigned controls.</span></li>
+
+</ol>
+<p style="margin: 0"><strong style="font-weight: 600">Verification.</strong> The game logic is checked by 313 automated tests, and I played full rounds in a browser at desktop and phone sizes.</p>
+<div class="flow" aria-label="Requirements, then build, then test, then iterate">
+<span>Requirements</span><span aria-hidden="true">→</span><span>Build</span><span aria-hidden="true">→</span><span>Test</span><span aria-hidden="true">→</span><span>Iterate</span>
+</div>
+
+</div>
+</div>
+
+<div class="split">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 600"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: #B25400; margin-bottom: 8px">05</span>What I learned</h2>
+<div style="font-size: 17px; line-height: 1.65; max-width: 68ch; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0">The quality of what I got back depended on the quality of what I asked for. Vague feedback goes nowhere, but a spec with exact test cases gave Claude Code a target and gave me a fast way to check its work.&nbsp;</p>
+<p style="margin: 8px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #535A66">Next steps</p>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px">
+
+<li>Add count-based strategy deviations, where the right play changes with the true count.</li>
+<li>Track my accuracy across sessions to see how fast each skill improves and identify specific areas of imporvement</li>
+</ul>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="wrap" style="padding-top: 48px; padding-bottom: 96px">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 32px; border-top: 2px solid #14171F">
+<a class="btn" href="https://adcahill7.github.io/blackjack-trainer/" target="_blank" rel="noopener" style="background: #E57200; color: #14171F">Try the live demo ↗</a>
+<a class="btn" href="racer.html" style="border: 1px solid #DADDE2; color: #14171F">Next project →</a>
+</div>
+</div>
+</section>
+
+<footer style="background: #14171F; color: #9AA1AD">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 32px; padding-bottom: 32px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">
+<span>© 2026 Andrew Cahill</span>
+<span style="display: flex; gap: 20px"><a href="mailto:adcahill7@gmail.com" style="color: #FFFFFF">Email</a><a href="https://www.linkedin.com/in/andrewdcahill/" target="_blank" rel="noopener" style="color: #FFFFFF">LinkedIn ↗</a></span>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
